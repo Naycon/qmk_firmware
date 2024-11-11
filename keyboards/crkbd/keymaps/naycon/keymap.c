@@ -17,7 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include QMK_KEYBOARD_H
-#include "keymap_swedish.h"
+#include "keymap_swedish_mac_iso.h"
 #include <stdio.h>
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
@@ -45,7 +45,7 @@ enum custom_keycodes {
 #define MCTL_Q MT(MOD_LCTL, KC_Q)
 #define MCTL_SPC MT(MOD_LCTL, KC_SPC)
 #define MCTL_ENT MT(MOD_LCTL, KC_ENT)
-#define MALT_ESC MT(MOD_LALT, KC_ESC)
+#define MCMD_ESC MT(MOD_LGUI, KC_ESC)
 /* #define MCMD_ESC MT(MOD_LGUI, KC_ESC) */
 #define LBRK_J LT(_BRACKETS, KC_J)
 #define LQUO_K LT(_QUOTES, KC_K)
@@ -53,20 +53,20 @@ enum custom_keycodes {
 #define LARW_F LT(_ARROWS, KC_F)
 #define LNUM_D LT(_NUMBERS, KC_D)
 #define KC_NSONG KC_MEDIA_FAST_FORWARD
-#define SE_AE SE_ARNG // Ä
+#define SE_AE_ SE_ARNG // Ä
 #define SE_AA SE_ADIA // Å
 #define KC_CAPG LSFT(KC_G)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_split_3x6_3( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,  MCTL_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   SE_AE,\
+       KC_TAB,  MCTL_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   SE_AE_,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_ESC,    KC_A,    KC_S,  LNUM_D,  LARW_F,    KC_G,                         KC_H,  LBRK_J,  LQUO_K,  LSYM_L, SE_ODIA,   SE_AA,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT,  KC_DOT, KC_MPLY,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LWIN,MALT_ESC,MCTL_SPC,   MCTL_ENT,  KC_BSPC, XXXXXXX \
+                                         KC_LOPT, MCMD_ESC,MCTL_SPC,   MCTL_ENT,  KC_BSPC, XXXXXXX \
                                       //`--------------------------'  `--------------------------'
   ),
 
